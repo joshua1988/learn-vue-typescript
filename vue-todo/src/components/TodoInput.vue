@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { VueEvent } from "@/types/index";
 
 export default Vue.extend({
   // props: ["item"],
@@ -18,13 +19,20 @@ export default Vue.extend({
     }
   },
   methods: {
-    handleInput(event: InputEvent) {
+    handleInput(event: VueEvent.Input<HTMLInputElement>) {
+      event.target.value;
+      // event.target;
+
+      // const a: VueEvent.Input = {
+      //   target
+      // };
+
       // console.log(event);
       // if (!event.target) {
       //   return;
       // }
-      const eventTarget = event.target as HTMLInputElement;
-      this.$emit("input", eventTarget.value);
+      // const eventTarget = event.target as HTMLInputElement;
+      this.$emit("input", event.target.value);
     },
     addTodo() {
       this.$emit("add");
